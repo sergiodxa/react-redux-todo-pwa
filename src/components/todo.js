@@ -1,21 +1,30 @@
 import React from "react";
+import { connect } from "react-redux";
+import { markAsCompleted } from "../actions";
 
-import { useMarkAsCompleted } from "../action-hooks";
-
-function Todo({ id, dueDate, completed, message }) {
-  const markAsCompleted = useMarkAsCompleted();
-
+function Todo(props) {
   function handleClick() {
-    markAsCompleted(id);
+    props.markAsCompleted();
   }
 
   return (
     <>
-      <h3>{message}</h3>
-      <time>{new Date(dueDate).toLocaleString()}</time>
-      {!completed && <button onClick={handleClick}>Complete</button>}
+      <h3>{props.message}</h3>
+      <time>{new Date(props.dueDate).toLocaleString()}</time>
+      {!props.completed && <button onClick={handleClick}>Complete</button>}
     </>
   );
 }
 
-export default Todo;
+function mapDispatch(dispatch, { id }) {
+  return {
+    markAsCompleted() {
+      return dispatch(markAsCompleted(id));
+    }
+  };
+}
+
+export default connect(
+  null,
+  mapDispatch
+)(Todo);

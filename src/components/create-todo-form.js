@@ -1,17 +1,17 @@
 import React from "react";
-import { useCreateTodo } from "../action-hooks";
+import { connect } from "react-redux";
+import { createTodo } from "../actions";
 
-function CreateTodoForm() {
+function CreateTodoForm(props) {
   const [message, setMessage] = React.useState("");
-  const createTodo = useCreateTodo();
 
   function handleChange(event) {
     setMessage(event.target.value);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    createTodo(message);
+    props.createTodo(message);
     setMessage("");
   }
 
@@ -22,4 +22,15 @@ function CreateTodoForm() {
   );
 }
 
-export default CreateTodoForm;
+function mapDispatch(dispatch) {
+  return {
+    createTodo(message) {
+      return dispatch(createTodo(message));
+    }
+  };
+}
+
+export default connect(
+  null,
+  mapDispatch
+)(CreateTodoForm);
