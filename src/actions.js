@@ -9,18 +9,16 @@ function markAsCompleted(id) {
 }
 
 function createTodo(message) {
-  return async dispatch => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos", {
-      method: "POST",
-      body: JSON.stringify({
-        message,
-        dueDate: new Date(Date.now() + WEEK_IN_MILLISECONDS),
-        completed: false
-      }),
-      headers: { "Content-type": "application/json" }
-    });
-    const payload = await response.json();
-    return dispatch({ type: "CREATE_TODO", payload });
+  const id = Date.now();
+  const dueDate = new Date(id + WEEK_IN_MILLISECONDS);
+  return {
+    type: "CREATE_TODO",
+    payload: {
+      id,
+      message,
+      dueDate,
+      completed: false
+    }
   };
 }
 
