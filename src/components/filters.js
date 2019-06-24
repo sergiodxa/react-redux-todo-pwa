@@ -26,7 +26,11 @@ function Filters(props) {
     >
       <div>
         <h3 css={{ margin: ".5rem 0", marginRight: "1rem" }}>Filter:</h3>
-        <Select onChange={handleFilterChange} value={props.filter}>
+        <Select
+          aria-label="Select filter option"
+          onChange={handleFilterChange}
+          value={props.filter}
+        >
           <option value="NONE">Unfiltered</option>
           <option value="ONLY_COMPLETED">Completed</option>
           <option value="ONLY_PENDING">Pending</option>
@@ -35,7 +39,11 @@ function Filters(props) {
       <Spacer />
       <div>
         <h3 css={{ margin: ".5rem 0", marginRight: "1rem" }}>Sort by:</h3>
-        <Select onChange={handleSortByChange} value={props.sortBy}>
+        <Select
+          aria-label="Select sort option"
+          onChange={handleSortByChange}
+          value={props.sortBy}
+        >
           <option value="DUE_DATE_DESC">Due date desc</option>
           <option value="DUE_DATE_ASC">Due date asc</option>
         </Select>
