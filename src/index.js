@@ -12,7 +12,14 @@ import Filters from "./components/filters";
 
 function App() {
   return (
-    <main css={{ maxWidth: "720px", margin: "0 auto", width: "99%" }}>
+    <main
+      css={{
+        maxWidth: "720px",
+        margin: "0 auto",
+        boxSizing: "border-box",
+        padding: "0 1rem"
+      }}
+    >
       <Global
         styles={{
           body: {
