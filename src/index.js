@@ -1,6 +1,8 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
+import { Global } from "@emotion/core";
 
 import store from "./store";
 
@@ -10,11 +12,21 @@ import Filters from "./components/filters";
 
 function App() {
   return (
-    <>
-      <Filters />
+    <main css={{ maxWidth: "720px", margin: "0 auto", width: "99%" }}>
+      <Global
+        styles={{
+          body: {
+            background: "#fafafa",
+            fontFamily:
+              "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+            margin: 0
+          }
+        }}
+      />
       <CreateTodoForm />
+      <Filters />
       <TodoList />
-    </>
+    </main>
   );
 }
 

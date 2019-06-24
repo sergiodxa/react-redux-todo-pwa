@@ -1,18 +1,37 @@
+/** @jsx jsx */
 import React from "react";
+import { jsx } from "@emotion/core";
 import { connect } from "react-redux";
 import { markAsCompleted } from "../actions";
+import { Card, Button } from "./ui";
 
 function Todo(props) {
   function handleClick() {
     props.markAsCompleted();
   }
 
+  console.log(new Date(props.dueDate));
+
   return (
-    <>
-      <h3>{props.message}</h3>
-      <time>{new Date(props.dueDate).toLocaleString()}</time>
-      {!props.completed && <button onClick={handleClick}>Complete</button>}
-    </>
+    <Card styles={{ margin: "1rem 0" }}>
+      <h3 css={{ margin: "0 0 1rem" }}>{props.message}</h3>
+      <time css={{ display: "block" }}>
+        Due Date: {new Date(props.dueDate).toLocaleString("default", {
+          month: "long",
+          year: "numeric",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        })}
+      </time>
+      {!props.completed && (
+        <>
+          <br />
+          <Button onClick={handleClick}>Complete</Button>
+        </>
+      )}
+    </Card>
   );
 }
 
