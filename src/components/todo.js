@@ -10,8 +10,6 @@ function Todo(props) {
     props.markAsCompleted();
   }
 
-  console.log(new Date(props.dueDate));
-
   return (
     <Card styles={{ margin: "1rem 0" }}>
       <h3 css={{ margin: "0 0 1rem" }}>{props.message}</h3>
@@ -26,10 +24,10 @@ function Todo(props) {
         })}
       </time>
       {!props.completed && (
-        <>
+        <React.Fragment>
           <br />
           <Button onClick={handleClick}>Complete</Button>
-        </>
+        </React.Fragment>
       )}
     </Card>
   );
