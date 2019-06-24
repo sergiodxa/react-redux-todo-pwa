@@ -188,4 +188,8 @@ function Select({ styles = {}, children, ...props }) {
   );
 }
 
-export { Button, Card, Input, Modal, Select };
+function Spacer() {
+  return <div css={{ flex: 1 }} />;
+}
+
+export { Button, Card, Input, Modal, Select, Spacer };
