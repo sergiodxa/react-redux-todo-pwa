@@ -18,21 +18,28 @@ function Filters(props) {
       css={{
         marginTop: "1rem",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        "@media (max-width: 512px)": {
+          flexDirection: "column"
+        }
       }}
     >
-      <h3 css={{ margin: 0, marginRight: "1rem" }}>Filter:</h3>
-      <Select onChange={handleFilterChange} value={props.filter}>
-        <option value="NONE">Unfiltered</option>
-        <option value="ONLY_COMPLETED">Completed</option>
-        <option value="ONLY_PENDING">Pending</option>
-      </Select>
+      <div>
+        <h3 css={{ margin: ".5rem 0", marginRight: "1rem" }}>Filter:</h3>
+        <Select onChange={handleFilterChange} value={props.filter}>
+          <option value="NONE">Unfiltered</option>
+          <option value="ONLY_COMPLETED">Completed</option>
+          <option value="ONLY_PENDING">Pending</option>
+        </Select>
+      </div>
       <Spacer />
-      <h3 css={{ margin: 0, marginRight: "1rem" }}>Sort by:</h3>
-      <Select onChange={handleSortByChange} value={props.sortBy}>
-        <option value="DUE_DATE_DESC">Due date desc</option>
-        <option value="DUE_DATE_ASC">Due date asc</option>
-      </Select>
+      <div>
+        <h3 css={{ margin: ".5rem 0", marginRight: "1rem" }}>Sort by:</h3>
+        <Select onChange={handleSortByChange} value={props.sortBy}>
+          <option value="DUE_DATE_DESC">Due date desc</option>
+          <option value="DUE_DATE_ASC">Due date asc</option>
+        </Select>
+      </div>
     </div>
   );
 }
