@@ -10,6 +10,8 @@ import CreateTodoForm from "./components/create-todo-form";
 import TodoList from "./components/todo-list";
 import Filters from "./components/filters";
 
+import { register } from "./service-worker";
+
 function App() {
   return (
     <main
@@ -44,3 +46,5 @@ render(
   </Provider>,
   $root
 );
+
+register();
